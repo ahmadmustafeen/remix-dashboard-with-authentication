@@ -1,6 +1,7 @@
-import { Box, Button, Flex, Grid, Text, BackgroundImage, Group } from "@mantine/core";
+import { Box, Button, Flex, Grid, Text, BackgroundImage } from "@mantine/core";
 import { Form, Link } from "@remix-run/react";
-import Input from "~/components/input";
+import AUTHNAV from "~/components/authnav";
+import INPUT from "~/components/input";
 
 export default function SignUp() {
   return (
@@ -14,11 +15,10 @@ export default function SignUp() {
       }}
     >
       <Grid
-        w={{
-          base: "99%",
-        }}
+        w={"99%"}
         h={"100%"}
       >
+        <AUTHNAV />
         
         <Grid.Col
           span={{ base: 12, sm: 6 }}
@@ -51,8 +51,8 @@ export default function SignUp() {
               method="post"
               className="flex flex-col justify-center items-start mt-8 gap-5"
             >
-              <Input label="Email" placeholder="Your email address" />
-              <Input label="Password" placeholder="Your password" />
+              <INPUT label="Email" placeholder="Your email address" />
+              <INPUT label="Password" placeholder="Your password" />
 
               <Button
                 w={"100%"}
@@ -67,7 +67,7 @@ export default function SignUp() {
               </Button>
             </Form>
             <Text c={"#64748b"} fw={400} size="14px">
-              Don't have an account?{" "}
+              Don{"'"}t have an account?{" "}
               <Link to="/sign-up" className="font-bold text-white">
                 Sign up
               </Link>

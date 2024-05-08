@@ -1,14 +1,10 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Grid,
-  Text,
-  BackgroundImage,
-  Group,
-} from "@mantine/core";
+import { Box, Button, Flex, Grid, Text } from "@mantine/core";
+
 import { Form, Link } from "@remix-run/react";
-import Input from "~/components/input";
+import AUTHFOOTER from "~/components/authfooter";
+import AUTHLEFTGRID from "~/components/authleftgrid";
+import AUTHNAV from "~/components/authnav";
+import INPUT from "~/components/input";
 
 export default function SignIn() {
   return (
@@ -17,55 +13,30 @@ export default function SignIn() {
         base: "100%",
       }}
       mx="auto"
-      mih={{
-        base: "100vh",
-      }}
+      h={"100vh"}
     >
-      <Grid
-        w={{
-          base: "99%",
-        }}
-        h={"100%"}
-      >
-        <Flex className="absolute " mt={"24px"} w={"100%"} h={"50"}>
-          <Group
-            w={"70%"}
-            mx="auto"
-            p={"2px"}
-            className="rounded-[20px] bg-gradient-to-tr from-[#815353] to-[#FFFFFF]"
-          >
-            <Flex
-            w={"100%"}
-            h="100%"
-            mx="auto"
-            className="rounded-[20px]"
-            bg="rgba(255,255,255,0.9)"
-          >
-            shahr
-          </Flex>
-            
-          </Group>
-        </Flex>
+      <Grid w={"99%"} h={"100%"}>
+        <AUTHNAV />
         <Grid.Col
-          span={{ base: 12, md: 6 }}
-          className="flex justify-center items-center h-[600px]"
+          span={{ base: 12, sm: 6 }}
+          className="flex justify-center items-center h-[50vh] md:h-[100vh] !p-0"
         >
-          <BackgroundImage h={"100%"} miw={"100%"} src="svg/AUTH-PIC.webp">
-            {/* <Text c={"white"}>INSPIRED BY THE FUTURE:</Text>
-            <Text c={"white"}>INSPIRED BY THE FUTURE:</Text> */}
-          </BackgroundImage>
+          <AUTHLEFTGRID />
+          
         </Grid.Col>
         <Grid.Col
-          span={{ base: 12, md: 6 }}
-          className="flex justify-start items-center bg-gradient-to-br from-[#0F123B] via-[#090D2E] to-[#020515]"
+          span={{ base: 12, sm: 6 }}
+          className="flex justify-start items-center bg-gradient-to-br from-[#0F123B] via-[#090D2E] to-[#020515] !p-0"
         >
           <Flex
-            my={{ base: "sm", sm: "lg" }}
-            align={"start"}
+            mt={{ base: "50", md: "70" }}
+            mb={{ base: "20", md: "0" }}
+            align={{ base: "center", sm: "start" }}
             direction={"column"}
             gap={"10px"}
-            justify={{ base: "flex-start", sm: "space-start" }}
-            ml={70}
+            justify={{ base: "flex-start", sm: "flex-end" }}
+            ml={{ base: 0, sm: 50, md: 70 }}
+            w={"100%"}
           >
             <Text c={"white"} fw={700} size="30px">
               Nice to see you!
@@ -75,10 +46,10 @@ export default function SignIn() {
             </Text>
             <Form
               method="post"
-              className="flex flex-col justify-center items-start mt-8 gap-5"
+              className="flex flex-col justify-center items-center sm:items-start mt-8 gap-5"
             >
-              <Input label="Email" placeholder="Your email address" />
-              <Input label="Password" placeholder="Your password" />
+              <INPUT label="Email" placeholder="Your email address" />
+              <INPUT label="Password" placeholder="Your password" />
 
               <Button
                 w={"100%"}
@@ -86,22 +57,29 @@ export default function SignIn() {
                 variant="filled"
                 color="#0075FF"
                 radius="md"
+                mt={10}
               >
                 <Text size="10px" fw={700} c={"white"}>
                   {"SIGN IN"}
                 </Text>
               </Button>
             </Form>
-            <Text c={"#64748b"} fw={400} size="14px">
-              Don't have an account?{" "}
-              <Link to="/sign-up" className="font-bold text-white">
-                Sign up
-              </Link>
-            </Text>
+            <Flex
+              mt={10}
+              justify={"center"}
+              align={"center"}
+              w={{ base: "250", sm: 270, lg: "350" }}
+            >
+              <Text c={"#64748b"} fw={400} size="14px">
+                Don{"'"}t have an account?{" "}
+                <Link to="/sign-up" className="font-bold text-white">
+                  Sign up
+                </Link>
+              </Text>
+            </Flex>
+            <AUTHFOOTER />
           </Flex>
-          
         </Grid.Col>
-        
       </Grid>
     </Box>
   );

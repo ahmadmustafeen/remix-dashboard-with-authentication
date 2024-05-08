@@ -5,7 +5,7 @@ interface InputProp{
     placeholder: string
 }
 
-export default function Input({label, placeholder}:InputProp) {
+export default function INPUT({label, placeholder}:InputProp) {
   return (
     <Box>
       <Text size="14px" fw={400} c={"white"}>
