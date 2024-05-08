@@ -1,5 +1,8 @@
-import { Box, Button, Flex, Grid, Text, BackgroundImage } from "@mantine/core";
+import { Box, Button, Flex, Grid, Text } from "@mantine/core";
 import { Form, Link } from "@remix-run/react";
+import { IconBrandFacebook, IconBrandGoogleFilled, IconBrandAppleFilled } from "@tabler/icons-react";
+import AUTHFOOTER from "~/components/authfooter";
+import AUTHLEFTGRID from "~/components/authleftgrid";
 import AUTHNAV from "~/components/authnav";
 import INPUT from "~/components/input";
 
@@ -10,9 +13,7 @@ export default function SignUp() {
         base: "100%",
       }}
       mx="auto"
-      mih={{
-        base: "100vh",
-      }}
+      h={"100vh"}
     >
       <Grid
         w={"99%"}
@@ -22,12 +23,9 @@ export default function SignUp() {
         
         <Grid.Col
           span={{ base: 12, sm: 6 }}
-          className="flex justify-center items-center h-[600px]"
+          className="flex justify-center items-center min-h-[50vh] md:min-h-[100vh] !p-0"
         >
-          <BackgroundImage h={"100%"} miw={"100%"} src="svg/AUTH-PIC.webp">
-            <Text c={"white"}>INSPIRED BY THE FUTURE:</Text>
-            <Text c={"white"}>INSPIRED BY THE FUTURE:</Text>
-          </BackgroundImage>
+          <AUTHLEFTGRID/>
         </Grid.Col>
         <Grid.Col
           span={{ base: 12, sm: 6 }}
@@ -35,24 +33,72 @@ export default function SignUp() {
         >
           <Flex
             my={{ base: "sm", sm: "lg" }}
-            align={"start"}
+            align={{ base: "center", sm: "start" }}
             direction={"column"}
             gap={"10px"}
             justify={{ base: "flex-start", sm: "space-start" }}
-            ml={70}
+            ml={{ base: 0, sm: 20, md: 50 }}
+            mt={{ base: "50", md: "100" }}
+            w={"100%"}
           >
-            <Text c={"white"} fw={700} size="30px">
-              Nice to see you!
+            <Flex 
+              direction={"column"}
+              align={"center"}
+              w={{ base: "250", sm: 270, lg: "350" }}
+              ml={20}
+            >
+              <Text ta={"center"} c={"white"} fw={700} size="30px">
+              Welcome!
             </Text>
-            <Text c={"#A0AEC0"} fw={400} size="14px">
-              Enter your email and password to sign in
+            <Text ta={"center"} mt={10} c={"white"} fw={400} size="14px">
+              Use these awesome forms to login or create new account in your project for free.
             </Text>
+            </Flex>
+            
             <Form
               method="post"
-              className="flex flex-col justify-center items-start mt-8 gap-5"
+              className="flex flex-col justify-center items-start  gap-5 mt-8
+              border-2 border-indigo-600 rounded-2xl px-5 py-8
+              bg-gradient-to-r from-rgba-white via-rgba-white to-transparent"
             >
+              <Flex
+                direction={"column"}
+                w={"100%"}
+                align={"center"}
+                gap={20}
+              >
+                <Text>Register With</Text>
+                <Flex
+                  direction={"row"}
+                  w={"100%"}
+                  justify={"center"}
+                  gap={20}
+
+                >
+                  <Flex
+                  p={16}
+                  className="border-2 border-indigo-600 rounded-2xl"
+                >
+                  <IconBrandFacebook color="white" />
+                </Flex>
+                <Flex
+                  p={16}
+                  className="border-2 border-indigo-600 rounded-2xl"
+                >
+                  <IconBrandAppleFilled color="white" />
+                </Flex>
+                <Flex
+                  p={16}
+                  className="border-2 border-indigo-600 rounded-2xl"
+                >
+                  <IconBrandGoogleFilled color="white" />
+                </Flex>
+                </Flex>
+                
+              </Flex>
+              <INPUT label="Name" placeholder="Your full name" />
               <INPUT label="Email" placeholder="Your email address" />
-              <INPUT label="Password" placeholder="Your password" />
+              <INPUT label="Password" placeholder="Your password" typePassword />
 
               <Button
                 w={"100%"}
@@ -61,17 +107,25 @@ export default function SignUp() {
                 color="#0075FF"
                 radius="md"
               >
-                <Text size="10px" fw={700} c={"white"}>
+                <Text size="10px" fw={700} c={"white"} >
                   {"SIGN IN"}
                 </Text>
               </Button>
+              <Flex
+              mt={10}
+              justify={"center"}
+              align={"center"}
+              w={{ base: "250", sm: 270, lg: "350" }}
+            >
+              <Text c={"#64748b"} fw={400} size="14px">
+                Already have an account?{" "}
+                <Link to="/sign-in" className="font-bold text-white">
+                Sign in
+                </Link>
+              </Text>
+            </Flex>
             </Form>
-            <Text c={"#64748b"} fw={400} size="14px">
-              Don{"'"}t have an account?{" "}
-              <Link to="/sign-up" className="font-bold text-white">
-                Sign up
-              </Link>
-            </Text>
+            <AUTHFOOTER/>
           </Flex>
         </Grid.Col>
       </Grid>

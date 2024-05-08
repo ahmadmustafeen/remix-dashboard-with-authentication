@@ -49,7 +49,7 @@ export default function SignIn() {
               className="flex flex-col justify-center items-center sm:items-start mt-8 gap-5"
             >
               <INPUT label="Email" placeholder="Your email address" />
-              <INPUT label="Password" placeholder="Your password" />
+              <INPUT label="Password" placeholder="Your password" typePassword />
 
               <Button
                 w={"100%"}
@@ -77,7 +77,7 @@ export default function SignIn() {
                 </Link>
               </Text>
             </Flex>
-            <AUTHFOOTER />
+            <AUTHFOOTER hasMargin />
           </Flex>
         </Grid.Col>
       </Grid>
